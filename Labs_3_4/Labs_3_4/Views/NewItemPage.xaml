@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Labs_3_4.Views.NewItemPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="New Item"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Spacing="20" Padding="15">
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Разделенный санузел" FontSize="Medium" VerticalOptions="Center" />
+                        <Switch IsToggled="{Binding DividedBathroom, Mode=TwoWay}" x:Name="DividedBathToggle" Toggled="Switch_Toggled" HorizontalOptions="EndAndExpand" Margin="0,0,0,0" />
+                    </StackLayout>
+
+                    <Label Text="Тип дома:" FontSize="Medium" />
+                    <Picker Title="Панельный" x:Name="BuildingTypePicker" SelectedItem="{Binding BuildingType, Mode=TwoWay}">
+                        <Picker.Items>
+                            <x:String>Кирпичный</x:String>
+                            <x:String>Панельный</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Год постройки:" FontSize="Medium" VerticalOptions="Center" />
+                        <Entry Text="{Binding BuildingYear}" x:Name="BuildingYearInp" Keyboard="Numeric" HorizontalOptions="EndAndExpand" WidthRequest="70" MaxLength="4"  />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Площадь:" FontSize="Medium"  VerticalOptions="Center"/>
+                        <Entry Text="{Binding Square}" Keyboard="Numeric" WidthRequest="50"  />
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" Padding="0">
+                <Button Text="Сохранить" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" />
+                <Button Text="Отмена" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>
