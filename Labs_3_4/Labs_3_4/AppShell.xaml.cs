@@ -2,6 +2,7 @@
 using Labs_3_4.Views;
 using System;
 using System.Collections.Generic;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Labs_3_4
@@ -21,9 +22,19 @@ namespace Labs_3_4
             await Shell.Current.GoToAsync("//LoginPage");
         }
 
-        private void MailItemClicked(object sender, EventArgs e)
+        private async void MailItemClicked(object sender, EventArgs e)
         {
+            await Launcher.OpenAsync(new Uri($"mailto:{MailItem.Text}"));
+        }
 
+        private async void PhoneItem_Clicked(object sender, EventArgs e)
+        {
+            await Launcher.OpenAsync($"tel:{PhoneItem.Text}");
+        }
+
+        private async void SocialItem_Clicked(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://www.facebook.com");
         }
     }
 }
